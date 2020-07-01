@@ -1,0 +1,30 @@
+server:
+  port: 9999
+zuul:
+  routes:
+    citas-api:
+      path: /citas/**
+    especie-api:
+      path: /especies/**
+    mascotas-api:
+      path: /mascotas/**
+    propietarios-api:
+      path: /propietarios/**
+      serviceId: propietarios-api
+
+
+
+  prefix: /api
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
+spring:
+  application:
+    name: gateway
+
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://localhost:8989/user
